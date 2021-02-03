@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form>
+		<div class="card">
+			<p:dataTable var="p" value="#{pessoaBean.pessoas}" width="50%">
+				<p:column headerText="Nome">
+					<h:outputText value="#{p.nome}" />
+				</p:column>
+
+				<p:column headerText="Email">
+					<h:outputText value="#{p.email}" />
+				</p:column>
+
+				<p:column headerText="Cidade">
+					<h:outputText value="#{p.cidade}" />
+				</p:column>
+			</p:dataTable>
+		</div>
+	</h:form>
+</h:body>
+</html>

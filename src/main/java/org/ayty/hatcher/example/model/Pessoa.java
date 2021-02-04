@@ -1,4 +1,4 @@
-package org.ayty.hatcher.exemple.model;
+package org.ayty.hatcher.example.model;
 
 import lombok.Data;
 

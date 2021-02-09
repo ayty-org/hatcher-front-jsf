@@ -8,20 +8,21 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>LogIn Page</title>
+	<title>Login Page</title>
+
+	<link href="css/login.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-	<h:form>
-	<p:messsages id="messages"/>
-	<p:panelGrid columns="2">
-		<p:outputLabel for="Username" value="Nome Usuário"/>
-		<h:inputText value="#{loginBean.username}" />
-		<br />
-		Password
-		<h:inputSecret value="#{loginBean.password}" />
-		<br />
-		<h:commandButton action="#{loginBean.postLogin}" value="Login" />
-		<hr />
-	</h:form>
+
+	<div class="login-body">
+		<div class="login-panel">
+			<h:form>
+				<p:inputText value="#{loginBean.username}" placeholder="Username" class="username" />
+				<p:password value="#{loginBean.password}" placeholder="Password" class="password" />
+				<p:commandButton action="#{loginBean.postLogin}" value="Login" class="loginButton"/>
+			</h:form>
+		</div>
+	</div>
+
 </h:body>
 </html>

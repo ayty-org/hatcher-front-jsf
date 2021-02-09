@@ -1,0 +1,54 @@
+.login-body {
+	text-align: center;
+}
+
+.login-panel {
+	width: 30%;
+	height: 100%;
+	text-align: center;
+	padding: 40px 20px;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	flex: 1 1 100%;
+}
+
+.username {
+	background: #f6f7f7;
+	margin: 0px 0px 10px;
+	padding: 12px 10px;
+	width: 85%;
+	max-width: 247px;
+	margin-bottom: 10px;
+	background-color: #F6F7F7;
+	border: 1.2px solid #D4D6D9;
+	color: #515C66;
+	padding: 12px 10px;
+	width: 85%;
+}
+
+.password {
+	background: #f6f7f7;
+	width: 85%;
+	max-width: 247px;
+	margin-bottom: 10px;
+	background-color: #F6F7F7;
+	border: 1.2px solid #D4D6D9;
+	color: #515C66;
+	padding: 12px 10px;
+}
+
+.loginButton {
+	width: 85%;
+	max-width: 247px;
+	margin-bottom: 10px;
+	background: #464DF2;
+	border: 1.2px solid #D4D6D9;
+	color: #515C66;
+	padding: 12px 10px;
+}

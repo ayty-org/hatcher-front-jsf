@@ -10,19 +10,31 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Login Page</title>
 
-	<link href="css/login.css" rel="stylesheet"/>
+	<link href="css/login.css" rel="stylesheet" />
 </h:head>
-<h:body>
-
-	<div class="login-body">
+<h:body class="login-body">
+	<div class="login-wrapper">
 		<div class="login-panel">
+			<a href="home.xhtml" class="logo"><img src="img/logoOvo.png" /></a>
 			<h:form>
-				<p:inputText value="#{loginBean.username}" placeholder="Username" class="username" />
-				<p:password value="#{loginBean.password}" placeholder="Password" class="password" />
-				<p:commandButton action="#{loginBean.postLogin}" value="Login" class="loginButton"/>
+				<p:inputText value="#{loginBean.username}" placeholder="Username"
+					class="username" />
+				<p:password value="#{loginBean.password}" placeholder="Password"
+					class="password" />
+				<h:commandButton action="#{loginBean.postLogin}" value="LOGIN"
+					class="loginButton" />
 			</h:form>
+			<a href="#">Esqueceu a senha?</a>
+			<p>
+				Você não tem uma conta, <a href="#">Cadastre-se</a>
+			</p>
 		</div>
 	</div>
+	<div class="login-footer">
+		<a href="www.ayty.org">Ayty.org</a>
+		<h6>Copyright 2021</h6>
+	</div>
+
 
 </h:body>
 </html>

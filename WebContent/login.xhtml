@@ -10,12 +10,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Login Page</title>
 
-	<link href="css/login.css" rel="stylesheet" />
+	<link href="resources/css/login.css" rel="stylesheet" />
 </h:head>
 <h:body class="login-body">
+
 	<div class="login-wrapper">
 		<div class="login-panel">
-			<a href="home.xhtml" class="logo"><img src="img/logoOvo.png" /></a>
+			<a href="home.xhtml" class="logo"><img src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form>
 				<p:inputText value="#{loginBean.username}" placeholder="Username"
 					class="username" />
@@ -26,7 +27,7 @@
 			</h:form>
 			<a href="#">Esqueceu a senha?</a>
 			<p>
-				Você não tem uma conta, <a href="#">Cadastre-se</a>
+				Não possui uma conta? <a href="signup.xhtml">Clique aqui para cadastrar-se</a>
 			</p>
 		</div>
 	</div>

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.ws.rs.BeanParam;
 
 import org.ayty.model.User;
 import org.ayty.service.UserService;
@@ -32,4 +31,9 @@ public class UserBean implements Serializable {
 	public void postUser() {
 		service.postUser(user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname(), user.getImage());
 	}
+	
+	public void postLogin() {
+		service.postLogin(user.getLogin(), user.getPassword());
+	}
+
 }

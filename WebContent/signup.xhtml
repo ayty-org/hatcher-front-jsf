@@ -29,16 +29,15 @@
 					class="username" />
 
 				<p>Senha</p>
-				<p:password value="#{userBean.user.password}" placeholder="Password 1"
-					class="password" />
+				<p:password value="#{userBean.user.password}"
+					placeholder="Password 1" class="password" />
 				<p>Digite novamente a senha</p>
-				<p:password placeholder="Password 2"
-					class="password" />
+				<p:password placeholder="Password 2" class="password" />
 
 				<p>Foto de Perfil</p>
-				<div class="file">
-					<p:fileUpload  mode="simple" value="#{userBean.user.image}" />
-				</div>
+				<p:inputText value="#{userBean.user.image}" placeholder="Image"
+					class="image" />
+
 				<h:commandButton action="#{userBean.postUser}" value="CADASTRAR-SE"
 					class="signupButton" />
 			</h:form>

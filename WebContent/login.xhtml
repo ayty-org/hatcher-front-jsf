@@ -18,11 +18,11 @@
 		<div class="login-panel">
 			<a href="home.xhtml" class="logo"><img src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form>
-				<p:inputText value="#{loginBean.login.username}" placeholder="Username"
+				<p:inputText value="#{userBean.user.login}" placeholder="Username"
 					class="username" />
-				<p:password value="#{loginBean.login.password}" placeholder="Password"
+				<p:password value="#{userBean.user.password}" placeholder="Password"
 					class="password" />
-				<h:commandButton action="#{loginBean.postLogin}" value="LOGIN"
+				<h:commandButton action="#{userBean.postLogin}" value="LOGIN"
 					class="loginButton" />
 			</h:form>
 			<a href="#">Esqueceu a senha?</a>

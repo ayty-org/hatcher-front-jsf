@@ -18,8 +18,28 @@ import com.google.gson.reflect.TypeToken;
 public class UserService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private static final String REST_URI_POST_LOGIN = "http://localhost:3000/users";
 	private static final String REST_URI_GET_USER = "http://localhost:3000/users";
 	private static final String REST_URI_POST_USER = "http://localhost:3000/users";
+
+	private String toJsonLogin(String username, String password) {
+		User userLogin = new User();
+		userLogin.setLogin(username);
+		userLogin.setPassword(password);
+
+		String userLoginJson = new Gson().toJson(userLogin);
+
+		return userLoginJson;
+	}
+
+	public void postLogin(String username, String password) {
+		String userLoginJson = toJsonLogin(username, password);
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target(REST_URI_POST_LOGIN);
+		client.target(REST_URI_POST_LOGIN).request(MediaType.APPLICATION_JSON)
+				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
+
+	}
 
 	public List<User> getUsers() {
 

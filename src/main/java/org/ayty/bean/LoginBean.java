@@ -6,6 +6,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.ayty.model.Login;
 import org.ayty.service.LoginService;
 
 import lombok.Data;
@@ -16,13 +17,14 @@ import lombok.Data;
 public class LoginBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String username;
-	private String password;
+
+	private Login login = new Login();
+
 	@Inject
 	private LoginService loginService;
 
 	public void postLogin() {
-		loginService.postLogin(username, password);
+		loginService.postLogin(login.getUsername(), login.getPassword());
 	}
 
 }

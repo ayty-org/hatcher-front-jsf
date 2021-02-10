@@ -18,9 +18,9 @@
 		<div class="login-panel">
 			<a href="home.xhtml" class="logo"><img src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form>
-				<p:inputText value="#{loginBean.username}" placeholder="Username"
+				<p:inputText value="#{loginBean.login.username}" placeholder="Username"
 					class="username" />
-				<p:password value="#{loginBean.password}" placeholder="Password"
+				<p:password value="#{loginBean.login.password}" placeholder="Password"
 					class="password" />
 				<h:commandButton action="#{loginBean.postLogin}" value="LOGIN"
 					class="loginButton" />

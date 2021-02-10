@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 public class LoginService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String REST_URI = "http://localhost:3000/users";
+	private static final String REST_URI_POST_LOGIN = "http://localhost:3000/users";
 	private Client client;
 
 	public void init() {
@@ -35,8 +35,8 @@ public class LoginService implements Serializable {
 	public void postLogin(String username, String password) {
 		String userLoginJson = toJson(username, password);
 		init();
-		WebTarget target = client.target(REST_URI);
-		client.target(REST_URI).request(MediaType.APPLICATION_JSON)
+		WebTarget target = client.target(REST_URI_POST_LOGIN);
+		client.target(REST_URI_POST_LOGIN).request(MediaType.APPLICATION_JSON)
 				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
 
 	}

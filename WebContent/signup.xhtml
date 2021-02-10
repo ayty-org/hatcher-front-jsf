@@ -19,27 +19,27 @@
 				src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form class="signupform">
 				<p>Nome completo</p>
-				<p:inputText value="signUpBean.fullname"
+				<p:inputText value="#{userBean.user.fullname}"
 					placeholder="Insira o nome completo" class="username" />
 				<p>Email</p>
-				<p:inputText value="signUpBean.Email"
+				<p:inputText value="#{userBean.user.email}"
 					placeholder="Insira o seu Email" class="username" />
 				<p>Username</p>
-				<p:inputText value="signUpBean.username" placeholder="Username"
+				<p:inputText value="#{userBean.user.login}" placeholder="Username"
 					class="username" />
 
 				<p>Senha</p>
-				<p:password value="signUpBean.password1" placeholder="Password 1"
+				<p:password value="#{userBean.user.password}" placeholder="Password 1"
 					class="password" />
 				<p>Digite novamente a senha</p>
-				<p:password value="signUpBean.password2" placeholder="Password 2"
+				<p:password placeholder="Password 2"
 					class="password" />
 
 				<p>Foto de Perfil</p>
 				<div class="file">
-					<p:fileUpload  mode="simple" />
+					<p:fileUpload  mode="simple" value="#{userBean.user.image}" />
 				</div>
-				<h:commandButton action="signUpBean.postSignUp" value="CADASTRAR-SE"
+				<h:commandButton action="#{userBean.postUser}" value="CADASTRAR-SE"
 					class="signupButton" />
 			</h:form>
 

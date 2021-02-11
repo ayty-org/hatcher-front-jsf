@@ -19,8 +19,10 @@ public class UserService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private static final String REST_URI_POST_LOGIN = "http://localhost:3000/users";
-	private static final String REST_URI_GET_USER = "http://localhost:3000/users";
-	private static final String REST_URI_POST_USER = "http://localhost:3000/users";
+	private static final String REST_URI_GET_USER = "http://localhost:8080/hatcher/listUser";
+	private static final String REST_URI_POST_USER = "http://localhost:8080/hatcher/register";
+	// private static final String REST_URI_POST_USER =
+	// "http://localhost:3000/users";
 
 	private String toJsonLogin(String username, String password) {
 		User userLogin = new User();
@@ -40,6 +42,24 @@ public class UserService implements Serializable {
 				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
 
 	}
+
+//	public List<User> getUsers() {
+//
+//		Client client = ClientBuilder.newClient();
+//
+//		String URL = REST_URI_GET_USER;
+//
+//		WebTarget target = client.target(URL);
+//
+//		Response response = target.request().get();
+//
+//		String json = response.readEntity(String.class);
+//		response.close();
+//
+//		List<User> list = new Gson().fromJson(json, new TypeToken<List<User>>() {
+//		}.getType());
+//		return list;
+//	}
 
 	public List<User> getUsers() {
 
@@ -62,20 +82,23 @@ public class UserService implements Serializable {
 	private String toJson(String username, String password, String email, String fullname, String image) {
 
 		User user = new User();
+		user.setProfile("ALUNO");
 		user.setAdmin(false);
 		user.setEmail(email);
-		user.setFullname(fullname);
+		user.setFullName(fullname);
 		user.setImage(image);
 		user.setPassword(password);
 		user.setLogin(username);
 
 		String userRegisterJson = new Gson().toJson(user);
+		System.out.println(userRegisterJson);
 
 		return userRegisterJson;
 	}
 
 	public void postUser(String username, String password, String email, String fullname, String image) {
 		String userRegisterJson = toJson(username, password, email, fullname, image);
+		System.out.println(userRegisterJson);
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(REST_URI_POST_USER);
 		client.target(REST_URI_POST_USER).request(MediaType.APPLICATION_JSON)

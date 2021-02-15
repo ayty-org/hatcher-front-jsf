@@ -23,22 +23,19 @@ public class UserBean implements Serializable {
 	@Inject
 	UserService service;
 
-//	public List<User> getUsers() {
-//		return service.getUsers();
-//
-//	}
-
 	public List<User> getUsers() {
 		return service.getUsers();
 
 	}
-	
-	public void postUser() {
-		service.postUser(user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(), user.getImage());;
+
+	public String postUser() {
+		service.postUser(user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(), user.getImage());
+		return "successSignup";
 	}
-	
-	public void postLogin() {
+
+	public String postLogin() {
 		service.postLogin(user.getLogin(), user.getPassword());
+		return "index";
 	}
 
 }

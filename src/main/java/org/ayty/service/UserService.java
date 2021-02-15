@@ -18,11 +18,9 @@ import com.google.gson.reflect.TypeToken;
 public class UserService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String REST_URI_POST_LOGIN = "http://localhost:3000/users";
-	private static final String REST_URI_GET_USER = "http://localhost:8080/hatcher/listUser";
+	private static final String REST_URI_POST_LOGIN = "http://localhost:8080/hatcher/auth";
+	private static final String REST_URI_GET_USER = "http://localhost:8080/hatcher/listUsers";
 	private static final String REST_URI_POST_USER = "http://localhost:8080/hatcher/register";
-	// private static final String REST_URI_POST_USER =
-	// "http://localhost:3000/users";
 
 	private String toJsonLogin(String username, String password) {
 		User userLogin = new User();
@@ -42,24 +40,6 @@ public class UserService implements Serializable {
 				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
 
 	}
-
-//	public List<User> getUsers() {
-//
-//		Client client = ClientBuilder.newClient();
-//
-//		String URL = REST_URI_GET_USER;
-//
-//		WebTarget target = client.target(URL);
-//
-//		Response response = target.request().get();
-//
-//		String json = response.readEntity(String.class);
-//		response.close();
-//
-//		List<User> list = new Gson().fromJson(json, new TypeToken<List<User>>() {
-//		}.getType());
-//		return list;
-//	}
 
 	public List<User> getUsers() {
 

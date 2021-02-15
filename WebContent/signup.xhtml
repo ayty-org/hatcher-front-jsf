@@ -21,6 +21,7 @@
 				<p>Nome completo</p>
 				<p:inputText value="#{userBean.user.fullName}"
 					placeholder="Insira o nome completo" class="username" />
+
 				<p>Email</p>
 				<p:inputText value="#{userBean.user.email}"
 					placeholder="Insira o seu Email" class="username" />
@@ -36,7 +37,7 @@
 
 				<p>Foto de Perfil</p>
 				<p:inputText value="#{userBean.user.image}" placeholder="Image"
-					class="image" />
+					class="username" />
 
 				<h:commandButton action="#{userBean.postUser}" value="CADASTRAR-SE"
 					class="signupButton" />

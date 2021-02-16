@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Hatcher</title>
+</h:head>
+
+<h:body>
+	<div>
+
+		<h:form>
+			<p:menubar>
+				<p:menuitem value="Inicio" icon="pi pi-home" />
+				<p:menuitem value="Usuarios" icon="pi pi-user" url="userpage.xhtml" />
+
+				<p:submenu label="Projeto" icon="pi pi-briefcase">
+					<p:menuitem value="Novo projeto" url="#" />
+					<p:menuitem value="Buscar projeto" url="#" />
+				</p:submenu>
+
+				<p:submenu label="não sei" icon="pi pi-pencil">
+					<p:menuitem value="sei lá" url="#" icon="pi pi-angle-double-left" />
+					<p:menuitem value="sei lá" url="#" icon="pi pi-angle-double-right" />
+				</p:submenu>
+
+				<f:facet name="options">
+					<h:form id="formAcesso">
+						<h:outputLabel value="Username: " />
+						<h:outputText value="#{logoutUserBean.username}" />
+						|
+						<h:commandButton id="buttonEncerrarSessao" value="Logout"
+							action="#{logoutUserBean.encerrarSessao}" />
+					</h:form>
+				</f:facet>
+
+
+			</p:menubar>
+		</h:form>
+		<h:form>
+			<h:outputLabel value="Username: " />
+			<h:outputText value="#{logoutUserBean.username}" />
+		</h:form>
+
+	</div>
+</h:body>
+</html>

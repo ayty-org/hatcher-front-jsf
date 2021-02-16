@@ -13,7 +13,7 @@
 		<h:form>
 			<p:menubar>
 				<p:menuitem value="Inicio" icon="pi pi-home" />
-				<p:menuitem value="Usuarios" icon="pi pi-user" url="userpage.xhtml"/>
+				<p:menuitem value="Usuarios" icon="pi pi-user" url="userpage.xhtml" />
 
 				<p:submenu label="Projeto" icon="pi pi-briefcase">
 					<p:menuitem value="Novo projeto" url="#" />
@@ -26,13 +26,22 @@
 				</p:submenu>
 
 				<f:facet name="options">
-					<p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search" />
-					<p:button type="button" value="Login" icon="pi pi-home"
-						href="login.xhtml" />
+					<h:form id="formAcesso">
+						<h:outputLabel value="Username: " />
+						<h:outputText value="#{logoutUserBean.username}" style="margin-right: 5px;"/>
+						<h:commandButton id="buttonEncerrarSessao" value="Logout"
+							action="#{logoutUserBean.encerrarSessao}" />
+					</h:form>
 				</f:facet>
+
 
 			</p:menubar>
 		</h:form>
+		<h:form>
+			<h:outputLabel value="Username: " />
+			<h:outputText value="#{logoutUserBean.username}" />
+		</h:form>
+
 	</div>
 </h:body>
 </html>

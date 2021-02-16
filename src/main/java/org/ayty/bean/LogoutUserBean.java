@@ -30,7 +30,7 @@ public class LogoutUserBean {
 	public String encerrarSessao() {
 		this.httpServletRequest.getSession().removeAttribute("sessionUsername");
 		this.httpServletRequest.getSession().invalidate();
-		return "#";
+		return "indexLogin";
 	}
 
 }

@@ -8,6 +8,36 @@
 </h:head>
 
 <h:body>
+	<div>
+
+		<h:form>
+			<p:menubar>
+				
+				<p:submenu label="Usuarios" icon="pi pi-users">
+					<p:menuitem value="Novo Usuario" icon="pi pi-users" url="signup.xhtml" />
+					<p:menuitem value="Buscar Usuarios" icon="pi pi-search" url="userpage.xhtml" />
+				</p:submenu>
+				
+				<p:submenu label="Projeto" icon="pi pi-briefcase">
+					<p:menuitem value="Novo projeto" url="#" />
+					<p:menuitem value="Buscar projeto" url="#" />
+				</p:submenu>
+
+				<f:facet name="options">
+					<h:form id="formAcesso">
+						<h:outputLabel value="Username: " />
+						<h:outputText value="#{logoutUserBean.username}"
+							style="margin-right: 5px;" />
+						<h:commandButton id="buttonEncerrarSessao" value="Logout"
+							action="#{logoutUserBean.encerrarSessao}" />
+					</h:form>
+				</f:facet>
+
+
+			</p:menubar>
+		</h:form>
+	</div>
+
 	<h:form>
 		<div class="card">
 			<p:dataTable var="p" value="#{userBean.users}" width="50%">

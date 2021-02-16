@@ -16,18 +16,29 @@
 
 	<div class="login-wrapper">
 		<div class="login-panel">
-			<a href="home.xhtml" class="logo"><img src="resources/images/hatcherEggLogo.png" /></a>
+			<a href="home.xhtml" class="logo"><img
+				src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form>
-				<p:inputText value="#{userBean.user.login}" placeholder="Username"
-					class="username" />
-				<p:password value="#{userBean.user.password}" placeholder="Password"
-					class="password" />
-				<h:commandButton action="#{userBean.postLogin}" value="LOGIN"
+
+				<p:message for="username" styleClass="error"
+					style="display:contents;" />
+				<p:inputText value="#{userBean2.user.login}" placeholder="Username"
+					class="username" required="true" id="username"
+					requiredMessage="Username obrigatorio." />
+
+				<p:message for="password" styleClass="error"
+					style="display:contents;" />
+				<p:password value="#{userBean2.user.password}"
+					placeholder="Password" class="password" required="true"
+					id="password" requiredMessage="Password obrigatorio." />
+
+				<h:commandButton action="#{userBean2.postLogin}" value="LOGIN"
 					class="loginButton" />
 			</h:form>
 			<a href="#">Esqueceu a senha?</a>
 			<p>
-				Não possui uma conta? <a href="signup.xhtml">Clique aqui para cadastrar-se</a>
+				Não possui uma conta? <a href="signup.xhtml">Clique aqui para
+					cadastrar-se</a>
 			</p>
 		</div>
 	</div>

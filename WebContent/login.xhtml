@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login Page</title>
+
+	<link href="resources/css/login.css" rel="stylesheet" />
+</h:head>
+<h:body class="login-body">
+
+	<div class="login-wrapper">
+		<div class="login-panel">
+			<a href="home.xhtml" class="logo"><img
+				src="resources/images/hatcherEggLogo.png" /></a>
+			<h:form>
+
+				<p:message for="username" styleClass="error"
+					style="display:contents;" />
+				<p:inputText value="#{userBean2.user.login}" placeholder="Username"
+					class="username" required="true" id="username"
+					requiredMessage="Username obrigatorio." />
+
+				<p:message for="password" styleClass="error"
+					style="display:contents;" />
+				<p:password value="#{userBean2.user.password}"
+					placeholder="Password" class="password" required="true"
+					id="password" requiredMessage="Password obrigatorio." />
+
+				<h:commandButton action="#{userBean2.postLogin}" value="LOGIN"
+					class="loginButton" />
+			</h:form>
+			<a href="#">Esqueceu a senha?</a>
+			<p>
+				Não possui uma conta? <a href="signup.xhtml">Clique aqui para
+					cadastrar-se</a>
+			</p>
+		</div>
+	</div>
+	<div class="login-footer">
+		<a href="www.ayty.org">Ayty.org</a>
+		<h6>Copyright 2021</h6>
+	</div>
+
+
+</h:body>
+</html>

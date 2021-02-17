@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Hatcher</title>
+</h:head>
+
+<h:body>
+	<div>
+
+		<h:form>
+			<p:menubar>
+			
+				<p:submenu label="Usuarios" icon="pi pi-users" disabled="true">
+					<p:menuitem value="Novo Usuario" icon="pi pi-users" url="signup.xhtml" />
+					<p:menuitem value="Buscar Usuarios" icon="pi pi-search" url="userpage.xhtml" />
+				</p:submenu>
+
+				<p:submenu label="Projeto" icon="pi pi-briefcase" disabled="true">
+					<p:menuitem value="Novo projeto" url="#" />
+					<p:menuitem value="Buscar projeto" url="#" />
+				</p:submenu>
+
+				<p:submenu label="não sei" icon="pi pi-pencil">
+					<p:menuitem value="sei lá" url="#" icon="pi pi-angle-double-left" />
+					<p:menuitem value="sei lá" url="#" icon="pi pi-angle-double-right" />
+				</p:submenu>
+
+				<f:facet name="options">
+					<p:button type="button" value="Login" icon="pi pi-home"
+						href="login.xhtml" />
+				</f:facet>
+
+			</p:menubar>
+		</h:form>
+	</div>
+</h:body>
+</html>

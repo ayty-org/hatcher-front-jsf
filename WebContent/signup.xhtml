@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cadastrar-se</title>
+
+	<link href="resources/css/signup.css" rel="stylesheet" />
+</h:head>
+<h:body class="signup-body">
+	<div class="signup-wrapper">
+		<div class="signup-panel">
+			<a href="home.xhtml" class="logo"><img
+				src="resources/images/hatcherEggLogo.png" /></a>
+			<h:form class="signupform">
+				<p>Nome completo</p>
+				<p:inputText value="#{userBean2.user.fullName}"
+					placeholder="Insira o nome completo" class="username" />
+
+				<p>Email</p>
+				<p:inputText value="#{userBean2.user.email}"
+					placeholder="Insira o seu Email" class="username" />
+				<p>Username</p>
+				<p:inputText value="#{userBean2.user.login}" placeholder="Username"
+					class="username" />
+
+				<p>Senha</p>
+				<p:password value="#{userBean2.user.password}"
+					placeholder="Password 1" class="password" />
+
+				<p>Foto de Perfil</p>
+				<p:inputText value="#{userBean2.user.image}" placeholder="Image"
+					class="username" />
+
+				<h:commandButton action="#{userBean2.postUser}" value="CADASTRAR-SE"
+					class="signupButton" />
+			</h:form>
+
+			<span>
+				<p>
+					Já possui uma conta? <a href="login.xhtml">Clique para entrar</a>
+				</p>
+			</span>
+		</div>
+	</div>
+	<div class="signup-footer">
+		<a href="www.ayty.org">Ayty.org</a>
+		<h6>Copyright 2021</h6>
+	</div>
+
+
+</h:body>
+</html>

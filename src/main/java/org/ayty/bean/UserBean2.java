@@ -25,7 +25,8 @@ public class UserBean2 implements Serializable {
 	private String loginReturn;
 	private String username;
 
-	private AccessToken accessToken;
+	private AccessToken accessToken = new AccessToken();
+	private String token;
 
 	@Inject
 	UserService2 service;
@@ -42,8 +43,14 @@ public class UserBean2 implements Serializable {
 		return loginReturn;
 	}
 
+	public void setAccessToken(AccessToken accessToken) {
+		this.accessToken = accessToken;
+	}
+
 	public String postLogin() {
-		accessToken = service.postLogin(user.getLogin(), user.getPassword());
+		token = service.postLogin(user.getLogin(), user.getPassword());
+		this.setToken(this.token);
+		System.out.println("Post login token: " + token);
 		loginReturn = service.login(user.getLogin(), user.getPassword());
 		this.setUsername(user.getLogin());
 
@@ -56,7 +63,9 @@ public class UserBean2 implements Serializable {
 	}
 
 	public String postUser() {
-		service.postUser(user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(), user.getImage());
+		System.out.println("postUser token: " + token);
+		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(),
+				user.getImage());
 		return "indexLogout";
 	}
 

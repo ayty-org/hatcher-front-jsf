@@ -69,7 +69,7 @@ public class UserService2 implements Serializable {
 		return userLoginJson;
 	}
 
-	public AccessToken postLogin(String username, String password) {
+	public String postLogin(String username, String password) {
 		String userLoginJson = toJsonLogin(username, password);
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(REST_URI_POST_LOGIN);
@@ -78,9 +78,11 @@ public class UserService2 implements Serializable {
 				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
 
 		if (response.getStatus() == Status.UNAUTHORIZED.getStatusCode()) {
-			return accessToken = new Gson().fromJson(response.readEntity(String.class), AccessToken.class);
+//			accessToken = new Gson().fromJson(response.readEntity(String.class), AccessToken.class);
+			return "";
 		} else {
-			return accessToken = new Gson().fromJson(response.readEntity(String.class), AccessToken.class);
+			accessToken = new Gson().fromJson(response.readEntity(String.class), AccessToken.class);
+			return accessToken.getToken();
 		}
 	}
 
@@ -118,15 +120,14 @@ public class UserService2 implements Serializable {
 		return userRegisterJson;
 	}
 
-	public void postUser(String username, String password, String email, String fullname, String image) {
+	public void postUser(String token, String username, String password, String email, String fullname, String image) {
+
 		String userRegisterJson = toJson(username, password, email, fullname, image);
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(REST_URI_POST_USER);
-//		client.target(REST_URI_POST_USER).request(MediaType.APPLICATION_JSON)
-//				.post(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));
 
 		Response response = client.target(REST_URI_POST_USER).request(MediaType.APPLICATION_JSON)
-				.post(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));
+				.header("Authorization", token).post(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));
 
 	}
 

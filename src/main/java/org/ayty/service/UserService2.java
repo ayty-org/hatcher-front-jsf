@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -17,14 +16,15 @@ import org.ayty.model.AccessToken;
 import org.ayty.model.User;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 public class UserService2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private static final String REST_URI_POST_LOGIN = "http://localhost:8080/hatcher/auth";
-	private static final String REST_URI_GET_USER = "http://localhost:8080/hatcher/listUsers";
-	private static final String REST_URI_POST_USER = "http://localhost:8080/hatcher/register";
+	private static final String REST_URI_POST_LOGIN = "http://localhost:8080/api/v1/hatcher/auth";
+	private static final String REST_URI_GET_USERS = "http://localhost:8080/api/v1/hatcher/listUsers";
+	private static final String REST_URI_POST_USER = "http://localhost:8080/api/v1/hatcher/register";
 
 	private final HttpServletRequest httpServletRequest;
 	private final FacesContext facesContext;
@@ -72,7 +72,6 @@ public class UserService2 implements Serializable {
 	public String postLogin(String username, String password) {
 		String userLoginJson = toJsonLogin(username, password);
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(REST_URI_POST_LOGIN);
 
 		Response response = client.target(REST_URI_POST_LOGIN).request(MediaType.APPLICATION_JSON)
 				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
@@ -90,16 +89,19 @@ public class UserService2 implements Serializable {
 
 		Client client = ClientBuilder.newClient();
 
-		String URL = REST_URI_GET_USER;
+		String URL = REST_URI_GET_USERS;
 
-		WebTarget target = client.target(URL);
-
-		Response response = target.request().get();
+		Response response = client.target(URL).request(MediaType.APPLICATION_JSON).get();
 
 		String json = response.readEntity(String.class);
+
+		JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
+
+		System.out.println(convertedObject.get("content"));
+
 		response.close();
 
-		List<User> list = new Gson().fromJson(json, new TypeToken<List<User>>() {
+		List<User> list = new Gson().fromJson(convertedObject.get("content"), new TypeToken<List<User>>() {
 		}.getType());
 		return list;
 	}
@@ -124,7 +126,6 @@ public class UserService2 implements Serializable {
 
 		String userRegisterJson = toJson(username, password, email, fullname, image);
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(REST_URI_POST_USER);
 
 		Response response = client.target(REST_URI_POST_USER).request(MediaType.APPLICATION_JSON)
 				.header("Authorization", token).post(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));

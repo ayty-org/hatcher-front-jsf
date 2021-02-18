@@ -49,7 +49,6 @@ public class UserBean2 implements Serializable {
 
 	public String postLogin() {
 		token = service.postLogin(user.getLogin(), user.getPassword());
-		this.setToken(this.token);
 		System.out.println("Post login token: " + token);
 		loginReturn = service.login(user.getLogin(), user.getPassword());
 		this.setUsername(user.getLogin());

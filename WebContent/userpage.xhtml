@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Usuarios Hatcher</title>
+</h:head>
+
+<h:body>
+	<div>
+
+		<h:form>
+			<p:menubar>
+
+				<p:submenu label="Usuarios" icon="pi pi-users">
+					<p:menuitem value="Novo Usuario" icon="pi pi-users"
+						url="signup.xhtml" />
+					<p:menuitem value="Buscar Usuarios" icon="pi pi-search"
+						url="userpage.xhtml" />
+				</p:submenu>
+
+				<p:submenu label="Projeto" icon="pi pi-briefcase">
+					<p:menuitem value="Novo projeto" url="#" />
+					<p:menuitem value="Buscar projeto" url="#" />
+				</p:submenu>
+
+				<f:facet name="options">
+					<h:form id="formAcesso">
+						<h:outputLabel value="Username: " />
+						<h:outputText value="#{logoutUserBean.username}"
+							style="margin-right: 5px;" />
+						<h:commandButton id="buttonEncerrarSessao" value="Logout"
+							action="#{logoutUserBean.encerrarSessao}" />
+					</h:form>
+				</f:facet>
+
+
+			</p:menubar>
+		</h:form>
+	</div>
+
+	<h:form>
+		<div class="card">
+			<p:dataTable var="p" value="#{userBean2.users}" width="50%">
+				<p:column headerText="Username">
+					<h:outputText value="#{p.login}" />
+				</p:column>
+
+				<p:column headerText="Nome Completo">
+					<h:outputText value="#{p.fullName}" />
+				</p:column>
+
+				<p:column headerText="Email">
+					<h:outputText value="#{p.email}" />
+				</p:column>
+
+				<p:column>
+					<p:growl id="message" showDetail="true" />
+
+					<p:commandButton value="Editar" styleClass="ui-button-success"
+						class="signupButton" />
+
+					<span class="ui.separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton action="#{userBean2.deleteUser}" value="Deletar" update="message"
+						styleClass="ui-button-danger" >
+						<p:confirm header="Confirmação"
+							message="Tem certeza que deseja deletar usuário?"
+							icon="pi pi-info-circle" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+						responsive="true" width="350">
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirmdialog-no ui-button-flat" />
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" />
+					</p:confirmDialog>
+
+				</p:column>
+
+			</p:dataTable>
+		</div>
+	</h:form>
+</h:body>
+</html>

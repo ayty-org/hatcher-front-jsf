@@ -97,8 +97,6 @@ public class UserService2 implements Serializable {
 
 		JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
 
-		System.out.println(convertedObject.get("content"));
-
 		response.close();
 
 		List<User> list = new Gson().fromJson(convertedObject.get("content"), new TypeToken<List<User>>() {

@@ -37,7 +37,7 @@ public class UserService2 {
 		this.httpServletRequest = (HttpServletRequest) this.facesContext.getExternalContext().getRequest();
 	}
 
-	public String login(String username, String password) {
+	public String loginSession(String username, String password) {
 
 		userLogin.setLogin(username);
 		userLogin.setPassword(password);
@@ -45,7 +45,6 @@ public class UserService2 {
 			return "indexLogin";
 		} else {
 			this.httpServletRequest.getSession().setAttribute("sessionUsername", userLogin.getLogin());
-			System.out.println("Sessão aberta: " + userLogin.getLogin());
 			return "indexLogout";
 		}
 

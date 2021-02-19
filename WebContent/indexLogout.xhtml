@@ -27,8 +27,10 @@
 
 				<f:facet name="options">
 					<h:form id="formAcesso">
+						<p:avatar icon="pi pi-user" styleClass="p-mr-2" size="xlarge" />
 						<h:outputLabel value="Username: " />
-						<h:outputText value="#{logoutUserBean.username}" style="margin-right: 5px;"/>
+						<h:outputText value="#{logoutUserBean.username}"
+							style="margin-right: 5px;" />
 						<h:commandButton id="buttonEncerrarSessao" value="Logout"
 							action="#{logoutUserBean.encerrarSessao}" />
 					</h:form>

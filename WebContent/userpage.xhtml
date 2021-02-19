@@ -27,6 +27,7 @@
 
 				<f:facet name="options">
 					<h:form id="formAcesso">
+					<p:avatar icon="pi pi-user" styleClass="p-mr-2" />
 						<h:outputLabel value="Username: " />
 						<h:outputText value="#{logoutUserBean.username}"
 							style="margin-right: 5px;" />
@@ -40,7 +41,8 @@
 		</h:form>
 	</div>
 
-	<h:form>
+	<h:form >
+	
 		<div class="card">
 			<p:dataTable var="p" value="#{userBean2.users}" width="50%">
 				<p:column headerText="Username">
@@ -69,6 +71,7 @@
 						update="message" styleClass="ui-button-danger">
 						
 						<f:param name="idUsuario" value="#{p.id}" />
+						<f:ajax execute="@form" render="@form" />
 						
 						
 						<p:confirm header="Confirmação"

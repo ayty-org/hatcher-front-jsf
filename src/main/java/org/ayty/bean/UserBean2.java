@@ -37,19 +37,13 @@ public class UserBean2 implements Serializable {
 		return loginReturn;
 	}
 
-	public String doLogin() {
-
-		loginReturn = service.login(user.getLogin(), user.getPassword());
-		return loginReturn;
-	}
-
 	public void setAccessToken(AccessToken accessToken) {
 		this.accessToken = accessToken;
 	}
 
 	public String postLogin() {
 		token = service.postLogin(user.getLogin(), user.getPassword());
-		loginReturn = service.login(user.getLogin(), user.getPassword());
+		loginReturn = service.loginSession(user.getLogin(), user.getPassword());
 		this.setUsername(user.getLogin());
 
 		return loginReturn;
@@ -64,6 +58,15 @@ public class UserBean2 implements Serializable {
 		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(),
 				user.getImage());
 		return "indexLogout";
+	}
+
+	public String postUserAndDoLogin() {
+		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(),
+				user.getImage());
+		token = service.postLogin(user.getLogin(), user.getPassword());
+		loginReturn = service.loginSession(user.getLogin(), user.getPassword());
+		this.setUsername(user.getLogin());
+		return loginReturn;
 	}
 
 	public String deleteUser() {

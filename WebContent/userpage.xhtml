@@ -65,8 +65,12 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton action="#{userBean2.deleteUser}" value="Deletar" update="message"
-						styleClass="ui-button-danger" >
+					<p:commandButton action="#{userBean2.deleteUser}" value="Deletar"
+						update="message" styleClass="ui-button-danger">
+						
+						<f:param name="idUsuario" value="#{p.id}" />
+						
+						
 						<p:confirm header="Confirmação"
 							message="Tem certeza que deseja deletar usuário?"
 							icon="pi pi-info-circle" />
@@ -79,6 +83,8 @@
 						<p:commandButton value="Sim" type="button"
 							styleClass="ui-confirmdialog-yes" />
 					</p:confirmDialog>
+
+
 
 				</p:column>
 

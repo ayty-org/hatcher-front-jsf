@@ -1,9 +1,6 @@
 package org.ayty.service;
 
-import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -21,13 +18,12 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-public class UserService2 implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class UserService2 {
 
 	private static final String REST_URI_POST_LOGIN = "http://localhost:8080/api/v1/hatcher/auth";
 	private static final String REST_URI_GET_USERS = "http://localhost:8080/api/v1/hatcher/listUsers";
 	private static final String REST_URI_POST_USER = "http://localhost:8080/api/v1/hatcher/register";
-	private static final String REST_URI_DELETE_USER = "http://localhost:3000/users/1";
+	private static final String REST_URI_DELETE_USER = "http://localhost:8080/api/v1/hatcher/remove/";
 
 	private final HttpServletRequest httpServletRequest;
 	private final FacesContext facesContext;
@@ -45,12 +41,11 @@ public class UserService2 implements Serializable {
 
 		userLogin.setLogin(username);
 		userLogin.setPassword(password);
-		System.out.println(userLogin.toString());
 		if (userLogin.getLogin().isEmpty() || userLogin.getPassword().isEmpty()) {
 			return "indexLogin";
 		} else {
 			this.httpServletRequest.getSession().setAttribute("sessionUsername", userLogin.getLogin());
-			System.out.println("Sessï¿½o aberta: " + userLogin.getLogin());
+			System.out.println("Sessão aberta: " + userLogin.getLogin());
 			return "indexLogout";
 		}
 
@@ -80,7 +75,6 @@ public class UserService2 implements Serializable {
 				.post(Entity.entity(userLoginJson, MediaType.APPLICATION_JSON));
 
 		if (response.getStatus() == Status.UNAUTHORIZED.getStatusCode()) {
-//			accessToken = new Gson().fromJson(response.readEntity(String.class), AccessToken.class);
 			return "";
 		} else {
 			accessToken = new Gson().fromJson(response.readEntity(String.class), AccessToken.class);
@@ -99,7 +93,6 @@ public class UserService2 implements Serializable {
 		String json = response.readEntity(String.class);
 
 		JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
-
 
 		response.close();
 
@@ -131,26 +124,18 @@ public class UserService2 implements Serializable {
 
 		Response response = client.target(REST_URI_POST_USER).request(MediaType.APPLICATION_JSON)
 				.header("Authorization", token).post(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));
+		response.close();
 
 	}
-	
-	
 
-	public void deleteUser(List<User> users, String username) {
-		
-		//List<User> users = getUsers().stream().filter(u-> u.getLogin().equals(username)).collect(Collectors.toList());
-		System.out.println(users.size());
-		User user = users.get(0);
-		
-		System.out.println("Delete: "+user.toString());
-		
+	public void deleteUser(int id, String token) {
+
 		Client client = ClientBuilder.newClient();
 
-		Response response = client.target(REST_URI_DELETE_USER).path("/{id}").request(MediaType.APPLICATION_JSON).delete();
+		Response response = client.target(REST_URI_DELETE_USER + id).request(MediaType.APPLICATION_JSON)
+				.header("Authorization", token).delete();
+		response.close();
 
 	}
-	
-	
-	
 
 }

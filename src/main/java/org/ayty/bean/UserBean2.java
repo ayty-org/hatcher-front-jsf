@@ -2,11 +2,11 @@ package org.ayty.bean;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.ayty.model.AccessToken;
 import org.ayty.model.User;
@@ -17,8 +17,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@Named
-@ViewScoped
+@ManagedBean
+@SessionScoped
 public class UserBean2 implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,6 @@ public class UserBean2 implements Serializable {
 	UserService2 service;
 
 	public String encerrarLogin() {
-		System.out.println("Logout: " + getUsername());
 		loginReturn = service.encerrarSessao();
 		return loginReturn;
 	}
@@ -50,7 +49,6 @@ public class UserBean2 implements Serializable {
 
 	public String postLogin() {
 		token = service.postLogin(user.getLogin(), user.getPassword());
-		System.out.println("Post login token: " + token);
 		loginReturn = service.login(user.getLogin(), user.getPassword());
 		this.setUsername(user.getLogin());
 
@@ -63,17 +61,16 @@ public class UserBean2 implements Serializable {
 	}
 
 	public String postUser() {
-		System.out.println("postUser token: " + token);
 		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(),
 				user.getImage());
 		return "indexLogout";
 	}
-	
+
 	public String deleteUser() {
-		//List<User> users = service.getUsers().stream().filter(u-> u.getLogin().equals(user.getLogin())).collect(Collectors.toList());
-		//System.out.println("Bean: "+users.size());
-		service.deleteUser(service.getUsers().stream().filter(u-> u.getLogin().equals(user.getLogin())).collect(Collectors.toList()), user.getLogin());
-		
+		int id = Integer.parseInt(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idUsuario"));
+		service.deleteUser(id, token);
+
 		return "userpage";
 	}
 

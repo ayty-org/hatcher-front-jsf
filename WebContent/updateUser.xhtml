@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Atualizar Usuário</title>
+
+	<link href="resources/css/signup.css" rel="stylesheet" />
+</h:head>
+
+<h:body class="signup-body">
+
+	<div class="signup-wrapper">
+
+		<div class="sigun-panel">
+			<a class="logo"><img src="resources/images/hatcherEggLogo.png"
+				width="200" /></a>
+
+			<h:form class="signupform">
+
+				<h:panelGrid id="grid" cellpadding="7" columns="3"
+					styleClass="p-mb-3">
+
+					<p:outputLabel for="fullname" value="Nome completo:" />
+					<p:inputText id="fullname" value="#{userBean2.user.fullname}"
+						required="true" requiredMessage="Nome completo é obrigatório" />
+					<p:message for="fullname" styleClass="error"
+						style="display:contents;" />
+
+					<p:outputLabel for="email" value="E-mail:" />
+					<p:inputText id="email" value="#{userBean2.user.email}"
+						required="true" requiredMessage="E-mail é obrigatório" />
+					<p:message for="email" styleClass="error" style="display:contents;" />
+
+					<p:outputLabel for="username" value="Username:" />
+					<p:inputText id="username" value="#{userBean2.user.login}"
+						required="true" requiredMessage="Username é obrigatório" />
+					<p:message for="username" styleClass="error"
+						style="display:contents;" />
+
+					<p:outputLabel for="senha" value="Senha:" />
+					<p:inputText id="senha" value="#{userBean2.user.password}"
+						required="true" requiredMessage="Senha é obrigatório" />
+					<p:message for="senha" styleClass="error" style="display:contents;" />
+
+					<p:outputLabel for="image" value="Foto do perfil:" />
+					<p:inputText id="image" value="#{userBean2.user.image}" />
+
+				</h:panelGrid>
+
+
+				<h:commandButton action="#{userBean2.updateUser}"
+					value="CADASTRAR-SE" class="signupButton" />
+
+
+			</h:form>
+
+
+		</div>
+	</div>
+	<div class="signup-footer">
+		<a href="www.ayty.org">Ayty.org</a>
+		<h6>Copyright 2021</h6>
+	</div>
+
+
+
+</h:body>
+
+</html>

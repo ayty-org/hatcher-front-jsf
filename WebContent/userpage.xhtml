@@ -27,7 +27,7 @@
 
 				<f:facet name="options">
 					<h:form id="formAcesso">
-					<p:avatar icon="pi pi-user" styleClass="p-mr-2" />
+						<p:avatar icon="pi pi-user" styleClass="p-mr-2" />
 						<h:outputLabel value="Username: " />
 						<h:outputText value="#{logoutUserBean.username}"
 							style="margin-right: 5px;" />
@@ -41,8 +41,9 @@
 		</h:form>
 	</div>
 
-	<h:form >
-	
+
+	<h:form>
+
 		<div class="card">
 			<p:dataTable var="p" value="#{userBean2.users}" width="50%">
 				<p:column headerText="Username">
@@ -50,7 +51,7 @@
 				</p:column>
 
 				<p:column headerText="Nome Completo">
-					<h:outputText value="#{p.fullName}" />
+					<h:outputText value="#{p.fullname}" />
 				</p:column>
 
 				<p:column headerText="Email">
@@ -60,8 +61,13 @@
 				<p:column>
 					<p:growl id="message" showDetail="true" />
 
-					<p:commandButton value="Editar" styleClass="ui-button-success"
-						class="signupButton" />
+					<p:commandButton action="#{userBean2.getIdAndRedirectToUpdateUser}"
+						value="Editar" styleClass="ui-button-success" class="signupButton">
+
+						<f:param name="idUsuario" value="#{p.id}" />
+						<f:ajax execute="@form" render="@form" />
+
+					</p:commandButton>
 
 					<span class="ui.separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -69,11 +75,12 @@
 
 					<p:commandButton action="#{userBean2.deleteUser}" value="Deletar"
 						update="message" styleClass="ui-button-danger">
-						
+
+
 						<f:param name="idUsuario" value="#{p.id}" />
 						<f:ajax execute="@form" render="@form" />
-						
-						
+
+
 						<p:confirm header="Confirmação"
 							message="Tem certeza que deseja deletar usuário?"
 							icon="pi pi-info-circle" />

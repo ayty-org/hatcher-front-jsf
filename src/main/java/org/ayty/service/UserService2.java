@@ -25,6 +25,8 @@ public class UserService2 {
 	private static final String REST_URI_POST_USER = "http://localhost:8080/api/v1/hatcher/register";
 	private static final String REST_URI_DELETE_USER = "http://localhost:8080/api/v1/hatcher/remove/";
 
+	private static final String REST_URI_PUT_USER = "http://localhost:8080/api/v1/hatcher/update/";
+
 	private final HttpServletRequest httpServletRequest;
 	private final FacesContext facesContext;
 
@@ -104,9 +106,8 @@ public class UserService2 {
 
 		User user = new User();
 		user.setProfile("ALUNO");
-		user.setAdmin(false);
 		user.setEmail(email);
-		user.setFullName(fullname);
+		user.setFullname(fullname);
 		user.setImage(image);
 		user.setPassword(password);
 		user.setLogin(username);
@@ -135,6 +136,17 @@ public class UserService2 {
 				.header("Authorization", token).delete();
 		response.close();
 
+	}
+
+	public void updateUser(int id, String token, String username, String password, String email, String fullname,
+			String image) {
+
+		String userRegisterJson = toJson(username, password, email, fullname, image);
+		Client client = ClientBuilder.newClient();
+
+		Response response = client.target(REST_URI_PUT_USER + id).request(MediaType.APPLICATION_JSON)
+				.header("Authorization", token).put(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));
+		response.close();
 	}
 
 }

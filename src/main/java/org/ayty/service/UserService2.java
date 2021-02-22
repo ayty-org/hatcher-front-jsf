@@ -105,9 +105,8 @@ public class UserService2 {
 
 		User user = new User();
 		user.setProfile("ALUNO");
-		user.setAdmin(false);
 		user.setEmail(email);
-		user.setFullName(fullname);
+		user.setFullname(fullname);
 		user.setImage(image);
 		user.setPassword(password);
 		user.setLogin(username);

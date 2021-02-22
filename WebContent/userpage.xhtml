@@ -50,7 +50,7 @@
 				</p:column>
 
 				<p:column headerText="Nome Completo">
-					<h:outputText value="#{p.fullName}" />
+					<h:outputText value="#{p.fullname}" />
 				</p:column>
 
 				<p:column headerText="Email">
@@ -60,7 +60,7 @@
 				<p:column>
 					<p:growl id="message" showDetail="true" />
 
-					<p:commandButton action="#{userBean2.updateUser}" value="Editar"
+					<p:commandButton action="#{userBean2.getIdAndRedirectToUpdateUser}" value="Editar"
 						styleClass="ui-button-success" class="signupButton"> 
 						
 						<f:param name="idUsuario" value="#{p.id}"/>

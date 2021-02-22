@@ -24,14 +24,14 @@
 					styleClass="p-mb-3">
 
 					<p:outputLabel for="fullname" value="Nome completo:" />
-					<p:inputText id="fullname" value="#{userBean2.user.fullName}"
+					<p:inputText id="fullname" value="#{userBean2.user.fullname}"
 						required="true" requiredMessage="Nome completo é obrigatório" />
 					<p:message for="fullname" styleClass="error"
 						style="display:contents;" />
 
 					<p:outputLabel for="email" value="E-mail:" />
 					<p:inputText id="email" value="#{userBean2.user.email}"
-						required="true" requiredMessage="E-mail é onrigatório" />
+						required="true" requiredMessage="E-mail é obrigatório" />
 					<p:message for="email" styleClass="error" style="display:contents;" />
 
 					<p:outputLabel for="username" value="Username:" />
@@ -50,8 +50,9 @@
 
 				</h:panelGrid>
 
-				<p:commandButton value="SALVAR" id="btnAll" process="@all"
-					update="grid" action="#{userBean2.updateUser}" styleClass="p-mr-2" />
+
+				<h:commandButton action="#{userBean2.updateUser}"
+					value="CADASTRAR-SE" class="signupButton" />
 
 
 			</h:form>

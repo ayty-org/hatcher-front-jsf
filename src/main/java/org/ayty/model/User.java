@@ -8,8 +8,7 @@ public class User {
 	private String login;
 	private String password;
 	private String email;
-	private String fullName;
+	private String fullname;
 	private String image;
 	private String profile;
-	private Boolean admin;
 }

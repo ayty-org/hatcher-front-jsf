@@ -26,6 +26,8 @@ public class UserBean2 implements Serializable {
 	private String loginReturn;
 	private String username;
 
+	private Integer idUsuario;
+
 	private AccessToken accessToken = new AccessToken();
 	private String token;
 
@@ -35,10 +37,6 @@ public class UserBean2 implements Serializable {
 	public String encerrarLogin() {
 		loginReturn = service.encerrarSessao();
 		return loginReturn;
-	}
-
-	public void setAccessToken(AccessToken accessToken) {
-		this.accessToken = accessToken;
 	}
 
 	public String postLogin() {
@@ -55,13 +53,13 @@ public class UserBean2 implements Serializable {
 	}
 
 	public String postUser() {
-		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(),
+		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname(),
 				user.getImage());
 		return "indexLogout";
 	}
 
 	public String postUserAndDoLogin() {
-		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(),
+		service.postUser(token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname(),
 				user.getImage());
 		token = service.postLogin(user.getLogin(), user.getPassword());
 		loginReturn = service.loginSession(user.getLogin(), user.getPassword());
@@ -76,13 +74,19 @@ public class UserBean2 implements Serializable {
 
 		return "userpage";
 	}
-	
-	public String updateUser() {
-		int id = Integer.parseInt(
+
+	public String getIdAndRedirectToUpdateUser() {
+		idUsuario = Integer.parseInt(
 				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idUsuario"));
-		service.updateUser(id, token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullName(), user.getImage());
-		
+		setIdUsuario(idUsuario);
 		return "updateUser";
+	}
+
+	public String updateUser() {
+		service.updateUser(idUsuario, token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname(),
+				user.getImage());
+
+		return "userpage";
 
 	}
 

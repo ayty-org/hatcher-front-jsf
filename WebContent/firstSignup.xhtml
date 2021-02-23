@@ -18,21 +18,33 @@
 			<a href="home.xhtml" class="logo"><img
 				src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form class="signupform">
-				<p>Nome completo</p>
 
+				<p>Nome completo</p>
 				<p:inputText value="#{userBean2.user.fullname}"
-					placeholder="Insira o nome completo" class="username" />
+					placeholder="Insira o nome completo" class="username" id="fullname"
+					required="true" requiredMessage="Nome completo obrigatório." />
+				<p:message for="fullname" styleClass="error"
+					style="display:contents;" />
 
 				<p>Email</p>
 				<p:inputText value="#{userBean2.user.email}"
-					placeholder="Insira o seu Email" class="username" />
+					placeholder="Insira o seu Email" class="username" id="email"
+					required="true" requiredMessage="Email obrigatório." />
+				<p:message for="email" styleClass="error" style="display:contents;" />
+
 				<p>Username</p>
 				<p:inputText value="#{userBean2.user.login}" placeholder="Username"
-					class="username" />
+					class="username" id="username" required="true"
+					requiredMessage="Username obrigatório." />
+				<p:message for="username" styleClass="error"
+					style="display:contents;" />
 
 				<p>Senha</p>
 				<p:password value="#{userBean2.user.password}"
-					placeholder="Password 1" class="password" />
+					placeholder="Password" class="password" id="password"
+					required="true" requiredMessage="Password obrigatório." />
+				<p:message for="password" styleClass="error"
+					style="display:contents;" />
 
 				<p>Foto de Perfil</p>
 				<p:inputText value="#{userBean2.user.image}" placeholder="Image"

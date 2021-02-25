@@ -46,6 +46,7 @@
 
 		<div class="card">
 			<p:dataTable var="p" value="#{userBean2.users}" width="50%">
+
 				<p:column headerText="Username">
 					<h:outputText value="#{p.login}" />
 				</p:column>
@@ -59,13 +60,30 @@
 				</p:column>
 
 				<p:column>
-					<p:growl id="message" showDetail="true" />
+					<p:growl id="delete" showDetail="true" />
+
+					<p:commandButton action="#{userBean2.getUserById}"
+						styleClass="rounded-button ui-button-success" value="Show"
+						icon="pi pi-search">
+						<f:param name="idUsuario" value="#{p.id}" />
+					</p:commandButton>
+
+					<span class="ui.separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
 
 					<p:commandButton action="#{userBean2.getIdAndRedirectToUpdateUser}"
-						value="Editar" styleClass="ui-button-success" class="signupButton" >
+						value="Editar" styleClass="ui-button-success" class="signupButton">
+
 
 						<f:param name="idUsuario" value="#{p.id}" />
-						<f:ajax execute="@form" render="@form"/>
+						<f:param name="usernameForm" value="#{p.login}" />
+						<f:param name="fullnameForm" value="#{p.fullname}" />
+						<f:param name="emailForm" value="#{p.email}" />
+						<f:param name="passwordForm" value="#{p.password}" />
+						<f:param name="imageForm" value="#{p.image}" />
+						<f:ajax execute="@form" render="@form" />
+
 
 					</p:commandButton>
 
@@ -73,18 +91,21 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton action="#{userBean2.deleteUser}" value="Deletar"
-						update="message" styleClass="ui-button-danger">
-
+					<p:commandButton id="deletar" action="#{userBean2.deleteUser}"
+						actionListener="#{userBean2.deleteUserSucesso}" value="Deletar"
+						update="delete" styleClass="ui-button-danger">
 
 						<f:param name="idUsuario" value="#{p.id}" />
 						<f:ajax execute="@form" render="@form" />
 
-
 						<p:confirm header="Confirmação"
 							message="Tem certeza que deseja deletar usuário?"
-							icon="pi pi-info-circle" />
+							icon="pi pi-info-circle">
+							<f:ajax execute="@form" render="@form" />
+						</p:confirm>
 					</p:commandButton>
+					<p:message for="deletar" styleClass="info"
+						style="display:contents;" />
 
 					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
 						responsive="true" width="350">
@@ -101,5 +122,9 @@
 			</p:dataTable>
 		</div>
 	</h:form>
+
+
+
+
 </h:body>
 </html>

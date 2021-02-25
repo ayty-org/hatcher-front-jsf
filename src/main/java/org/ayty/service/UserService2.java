@@ -24,7 +24,7 @@ public class UserService2 {
 	private static final String REST_URI_GET_USERS = "http://localhost:8080/api/v1/hatcher/listUsers";
 	private static final String REST_URI_POST_USER = "http://localhost:8080/api/v1/hatcher/register";
 	private static final String REST_URI_DELETE_USER = "http://localhost:8080/api/v1/hatcher/remove/";
-
+	private static final String REST_URI_GET_USER = "http://localhost:8080/api/v1/hatcher/getById/";
 	private static final String REST_URI_PUT_USER = "http://localhost:8080/api/v1/hatcher/update/";
 
 	private final HttpServletRequest httpServletRequest;
@@ -148,5 +148,28 @@ public class UserService2 {
 				.header("Authorization", token).put(Entity.entity(userRegisterJson, MediaType.APPLICATION_JSON));
 		response.close();
 	}
+	
+	public User getUserById(int id) {
+		
+		Client client = ClientBuilder.newClient();
+
+		Response response = client.target(REST_URI_GET_USER + id).request(MediaType.APPLICATION_JSON).get();
+		User user = new Gson().fromJson(response.readEntity(String.class), User.class);
+		response.close();
+		System.out.println("user --->"+user.toString());
+		return user;
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+

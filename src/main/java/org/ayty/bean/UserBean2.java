@@ -2,6 +2,7 @@ package org.ayty.bean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -32,6 +33,9 @@ public class UserBean2 {
 	private Integer idUsuario;
 	private AccessToken accessToken = new AccessToken();
 	private String token;
+
+	private User showUser = new User();
+	private User userUpdate = new User();
 
 	@Inject
 	UserService2 service;
@@ -115,9 +119,25 @@ public class UserBean2 {
 	 * @return String
 	 */
 	public String getIdAndRedirectToUpdateUser() {
-		idUsuario = Integer.parseInt(
-				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idUsuario"));
-		setIdUsuario(idUsuario);
+		/*
+		 * idUsuario = Integer.parseInt(
+		 * FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap
+		 * ().get("idUsuario")); setIdUsuario(idUsuario);
+		 */
+
+		userUpdate.setId(Integer.parseInt(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idUsuario")));
+		userUpdate.setLogin(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("usernameForm"));
+		userUpdate.setEmail(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("emailForm"));
+		userUpdate.setFullname(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("fullnameForm"));
+		userUpdate.setPassword(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("passwordForm"));
+		userUpdate.setImage(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("imageForm"));
+
 		return "updateUser";
 	}
 
@@ -127,11 +147,33 @@ public class UserBean2 {
 	 * @return String
 	 */
 	public String updateUser() {
-		service.updateUser(idUsuario, token, user.getLogin(), user.getPassword(), user.getEmail(), user.getFullname(),
-				user.getImage());
+		service.updateUser(userUpdate.getId(), token, userUpdate.getLogin(), userUpdate.getPassword(), userUpdate.getEmail(),
+				userUpdate.getFullname(), userUpdate.getImage());
 
 		return "userpage";
 
 	}
 
+	public String getUserById() {
+
+		idUsuario = Integer.parseInt(
+				FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idUsuario"));
+		setShowUser(service.getUserById(idUsuario));
+		return "viewUser";
+	}
+
+	public void atualizarSucesso() {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário cadastrado", "Usuário atualizado com sucesso"));
+	}
+
+	public void deleteUserSucesso() {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário deletado", "Usuário deletado com sucesso"));
+	}
+	
+	public void sucessoCadastro() {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuário cadastrado", "Usuário cadastrado com sucesso"));
+	}
 }

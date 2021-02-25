@@ -18,6 +18,7 @@
 			<a href="home.xhtml" class="logo"><img
 				src="resources/images/hatcherEggLogo.png" /></a>
 			<h:form class="signupform">
+				<p:growl id="signup" showDetail="true" />
 
 				<p>Nome completo</p>
 				<p:inputText value="#{userBean2.user.fullname}"
@@ -50,8 +51,9 @@
 				<p:inputText value="#{userBean2.user.image}" placeholder="Image"
 					class="username" />
 
-				<h:commandButton action="#{userBean2.postUserAndDoLogin}"
-					value="CADASTRAR-SE" class="signupButton" />
+				<h:commandButton actionListener="#{userBean2.sucessoCadastro}"
+					action="#{userBean2.postUserAndDoLogin}" value="CADASTRAR-SE"
+					class="signupButton" update="signup" />
 			</h:form>
 
 			<span> Já possui uma conta? <a href="login.xhtml">Clique

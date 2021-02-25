@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Classe e Bean de operações CRUD de Usuario.
+ * Classe e Bean de operaï¿½ï¿½es CRUD de Usuario.
  * 
  */
 
@@ -37,7 +37,7 @@ public class UserBean2 {
 	UserService2 service;
 
 	/**
-	 * Método para encerrar a sessão de um usuario.
+	 * Mï¿½todo para encerrar a sessï¿½o de um usuario.
 	 */
 	public String encerrarLogin() {
 		loginReturn = service.encerrarSessao();
@@ -49,7 +49,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para iniciar a sessão de um usuario.
+	 * Mï¿½todo para iniciar a sessï¿½o de um usuario.
 	 */
 	public String postLogin() {
 		token = service.postLogin(user.getLogin(), user.getPassword());
@@ -60,7 +60,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para retornar uma lista de usuarios cadastrados.
+	 * Mï¿½todo para retornar uma lista de usuarios cadastrados.
 	 * 
 	 * @return List<User>
 	 */
@@ -70,7 +70,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para cadastrar um novo usuario.
+	 * Mï¿½todo para cadastrar um novo usuario.
 	 * 
 	 * @return String
 	 */
@@ -81,7 +81,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para cadastrar um novo usuario e iniciar sua sessão após o cadastro.
+	 * Mï¿½todo para cadastrar um novo usuario e iniciar sua sessï¿½o apï¿½s o cadastro.
 	 * 
 	 * @return String
 	 */
@@ -96,7 +96,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para deletar um usuario.
+	 * Mï¿½todo para deletar um usuario.
 	 * 
 	 * @return String
 	 */
@@ -109,7 +109,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para pegar um {@link id} do usuario e redirecionar para o update do
+	 * Mï¿½todo para pegar um {@link id} do usuario e redirecionar para o update do
 	 * respectivo usuario.
 	 * 
 	 * @return String
@@ -122,7 +122,7 @@ public class UserBean2 {
 	}
 
 	/**
-	 * Método para atualizar os dados de um usuario.
+	 * Mï¿½todo para atualizar os dados de um usuario.
 	 * 
 	 * @return String
 	 */

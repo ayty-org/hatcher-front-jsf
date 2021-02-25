@@ -62,10 +62,10 @@
 					<p:growl id="message" showDetail="true" />
 
 					<p:commandButton action="#{userBean2.getIdAndRedirectToUpdateUser}"
-						value="Editar" styleClass="ui-button-success" class="signupButton">
+						value="Editar" styleClass="ui-button-success" class="signupButton" >
 
 						<f:param name="idUsuario" value="#{p.id}" />
-						<f:ajax execute="@form" render="@form" />
+						<f:ajax execute="@form" render="@form"/>
 
 					</p:commandButton>
 

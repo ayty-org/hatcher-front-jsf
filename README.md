@@ -6,6 +6,9 @@ Front realizado com JSF consumindo uma API do Hatcher (Ferramenta de gerenciamen
 * Pacote padrão: `org.ayty.*`
 * Criar um servidor Wildfly e inserir no projeto.
 
+## Mudar a rota do servidor Wildfly
+**Como mudar a rota do servidor wildfly:** [Clique aqui.](https://petrim.com.br/blog/index.php/2019/06/17/mudando-portas-no-wildfly/#:~:text=Para%20alterar%20todas%20as%20portas,a%20porta%208080%20fica%208181 "Clique aqui.")
+
 
 ## Informações
 * O pacote `org.ayty.service` possui classes que possuem requisição ou resposta.

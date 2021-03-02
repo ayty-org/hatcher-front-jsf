@@ -25,7 +25,7 @@ Front realizado com JSF consumindo uma API do Hatcher (Ferramenta de gerenciamen
 
 ## Documentação completa no Driver
 Aqui contém a documentação com as imagens e tutorial passo a passo.
-**Documentação .DOCS:** [Clique aqui.](http://https://docs.google.com/document/d/1rbkOsDXkWtgD5eXiYU25iHqjVUIBV-9oHlhJ408XKMw/edit "Clique aqui.")
+**Documentação .DOCS:** [Clique aqui.](https://docs.google.com/document/d/1rbkOsDXkWtgD5eXiYU25iHqjVUIBV-9oHlhJ408XKMw/ "Clique aqui.")
 
 ##  Locais para acompanhamento de atividades
 **Hatcher-backend-API:** [Clique Aqui.](http://https://github.com/ayty-org/hatcher-api/projects/1 "Clique Aqui.")

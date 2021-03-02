@@ -12,19 +12,22 @@
 
 		<h:form>
 			<p:menubar>
-				
+
 				<p:submenu label="Usuarios" icon="pi pi-users">
-					<p:menuitem value="Novo Usuario" icon="pi pi-users" url="signup.xhtml" />
-					<p:menuitem value="Buscar Usuarios" icon="pi pi-search" url="userpage.xhtml" />
+					<p:menuitem value="Novo Usuario" icon="pi pi-users"
+						url="signup.xhtml" />
+					<p:menuitem value="Buscar Usuarios" icon="pi pi-search"
+						url="userpage.xhtml" />
 				</p:submenu>
-				
+
 				<p:submenu label="Projeto" icon="pi pi-briefcase">
-					<p:menuitem value="Novo projeto" url="#" />
-					<p:menuitem value="Buscar projeto" url="#" />
+					<p:menuitem value="Novo projeto" url="registerProject.xhtml" />
+					<p:menuitem value="Buscar projeto" url="pageProjects.xhtml" />
 				</p:submenu>
 
 				<f:facet name="options">
 					<h:form id="formAcesso">
+						<p:avatar icon="pi pi-user" styleClass="p-mr-2" />
 						<h:outputLabel value="Username: " />
 						<h:outputText value="#{logoutUserBean.username}"
 							style="margin-right: 5px;" />
@@ -38,22 +41,87 @@
 		</h:form>
 	</div>
 
+
 	<h:form>
+
 		<div class="card">
-			<p:dataTable var="p" value="#{userBean.users}" width="50%">
+			<p:dataTable var="p" value="#{userBean2.users}" width="50%">
+
 				<p:column headerText="Username">
 					<h:outputText value="#{p.login}" />
 				</p:column>
 
 				<p:column headerText="Nome Completo">
-					<h:outputText value="#{p.fullName}" />
+					<h:outputText value="#{p.fullname}" />
 				</p:column>
 
 				<p:column headerText="Email">
 					<h:outputText value="#{p.email}" />
 				</p:column>
+
+				<p:column>
+					<p:growl id="delete" showDetail="true" />
+
+					<p:commandButton action="#{userBean2.getUserById}"
+						styleClass="rounded-button ui-button-success" value="Show"
+						icon="pi pi-search">
+						<f:param name="idUsuario" value="#{p.id}" />
+					</p:commandButton>
+
+					<span class="ui.separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton action="#{userBean2.getIdAndRedirectToUpdateUser}"
+						value="Editar" styleClass="ui-button-success" class="signupButton">
+
+
+						<f:param name="idUsuario" value="#{p.id}" />
+						<f:param name="usernameForm" value="#{p.login}" />
+						<f:param name="fullnameForm" value="#{p.fullname}" />
+						<f:param name="emailForm" value="#{p.email}" />
+						<f:param name="passwordForm" value="#{p.password}" />
+						<f:param name="imageForm" value="#{p.image}" />
+						<f:ajax execute="@form" render="@form" />
+
+
+					</p:commandButton>
+
+					<span class="ui.separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton id="deletar" action="#{userBean2.deleteUser}"
+						actionListener="#{userBean2.deleteUserSucesso}" value="Deletar"
+						update="delete" styleClass="ui-button-danger">
+
+						<f:param name="idUsuario" value="#{p.id}" />
+						<f:ajax execute="@form" render="@form" />
+
+						<p:confirm header="Confirmação"
+							message="Tem certeza que deseja deletar usuário?"
+							icon="pi pi-info-circle">
+							<f:ajax execute="@form" render="@form" />
+						</p:confirm>
+					</p:commandButton>
+					<p:message for="deletar" styleClass="info"
+						style="display:contents;" />
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+						responsive="true" width="350">
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirmdialog-no ui-button-flat" />
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes" />
+					</p:confirmDialog>
+
+
+
+				</p:column>
+
 			</p:dataTable>
 		</div>
 	</h:form>
+
 </h:body>
 </html>

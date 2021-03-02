@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Atualizar Projeto</title>
+
+	<link href="resources/css/user.css" rel="stylesheet" />
+
+</h:head>
+
+<h:body>
+	<div class="container">
+		<a class="links" id="paracadastro"></a> <a class="links"
+			id="paralogin"></a>
+
+		<div class="content">
+			<div id="cadastro">
+				<h:form method="post" action="">
+					<p:growl id="register" showDetail="true" />
+					<h1>Atualizar Projeto</h1>
+
+					<p>
+						<p:outputLabel for="nome_cad">Nome do projeto</p:outputLabel>
+						<p:inputText value="#{projectBean.project.name}" id="nome_cad"
+							name="nome_cad" required="true" type="text" placeholder="nome" />
+						<p:message for="nome_cad" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="desc_card">Descrição</p:outputLabel>
+						<p:inputText value="#{projectBean.project.description}"
+							id="desc_card" name="desc_card" required="true" type="text"
+							placeholder="descrição" />
+						<p:message for="desc_card" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="logo_cad">Logo</p:outputLabel>
+						<p:inputText value="#{projectBean.project.logo}" id="logo_cad"
+							name="logo_cad" required="true" type="text" placeholder="logo" />
+						<p:message for="logo_cad" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="startDate_cad">Data de início</p:outputLabel>
+						<p:inputText value="#{projectBean.project.startDate}"
+							id="startDate_cad" name="startDate_cad" required="true"
+							type="date" />
+						<p:message for="startDate_cad" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="endDate_cad">Data de termino</p:outputLabel>
+						<p:inputText value="#{projectBean.project.endDate}"
+							id="endDate_cad" name="endDate_cad" required="true" type="date" />
+						<p:message for="endDate_cad" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:commandButton value="Atualizar"
+							actionListener="#{projectBean.sucessoCadastro}"
+							action="#{projectBean.postProject}" />
+						<span class="ui.separator"> <span
+							class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
+						<p:button href="pageProjects.xhtml" value="Voltar" />
+					</p>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+
+</html>

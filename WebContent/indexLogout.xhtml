@@ -11,7 +11,9 @@
 	<div>
 
 		<h:form>
+
 			<p:menubar>
+
 				<p:menuitem value="Inicio" icon="pi pi-home" />
 				<p:menuitem value="Usuarios" icon="pi pi-user" url="userpage.xhtml" />
 
@@ -27,8 +29,11 @@
 
 				<f:facet name="options">
 					<h:form id="formAcesso">
+
+						<p:avatar icon="pi pi-user" styleClass="p-mr-2" />
 						<h:outputLabel value="Username: " />
-						<h:outputText value="#{logoutUserBean.username}" style="margin-right: 5px;"/>
+						<h:outputText value="#{logoutUserBean.username}"
+							style="margin-right: 5px;" />
 						<h:commandButton id="buttonEncerrarSessao" value="Logout"
 							action="#{logoutUserBean.encerrarSessao}" />
 					</h:form>
@@ -42,6 +47,19 @@
 			<h:outputText value="#{logoutUserBean.username}" />
 		</h:form>
 
+		<p>
+			<font size="15" face="Verdana">
+				<center>
+					<h:outputText value="Bem vindo(a) ao" />
+				</center>
+				<center>
+					<img src="resources/images/hatcherEggLogo.png" width="400" />
+				</center>
+
+			</font>
+
+		</p>
 	</div>
+
 </h:body>
 </html>

@@ -33,7 +33,7 @@ Aqui contém a documentação com as imagens e tutorial passo a passo.
 **Hatcher-front-JSF:** [Clique Aqui.](http://https://github.com/ayty-org/hatcher-front-jsf/projects/1 "Clique Aqui.")
 
 ##  Documentação da API utilizando Swagger
-**Swagger-API:** [Clique aqui.](http://https://doc-universeme.netlify.app/ "Clique aqui.")
+**Swagger-API:** [Clique aqui.](https://doc-universeme.netlify.app/ "Clique aqui.")
 
 # Acompanhamento de atividades
 Existem 4 colunas para verificar o acompanhamento das atividades

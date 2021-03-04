@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Projetos</title>
+	<link href="resources/css/user.css" rel="stylesheet" />
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="content">
+			<div id="cadastro">
+				<h1>Projeto</h1>
+				<h:form>
+
+					<p>
+					<center>
+						<p:graphicImage library="images" name="hatcherEggLogo.png"
+							width="300" />
+					</center>
+					</p>
+
+					<p>
+
+						<h:outputLabel value="Nome do projeto: "
+							style="font-family: times, serif; font-size:20pt; font-style:italic" />
+						<h:outputLabel value="#{projectBean.showProject.name}"
+							style="font-family: times, serif; font-size:20pt; font-style:italic" />
+					</p>
+					<p>
+						<h:outputLabel value="Descrição: "
+							style="font-family: times, serif; font-size:20pt; font-style:italic" />
+						<h:outputLabel value="#{projectBean.showProject.description}"
+							style="font-family: times, serif; font-size:20pt; font-style:italic" />
+					</p>
+					<p>
+						<h:outputLabel value="Data de início: "
+							style="font-family: times, serif; font-size:20pt; font-style:italic"/>
+						<h:outputLabel value="#{projectBean.showProject.startDate}"
+							style="font-family: times, serif; font-size:20pt; font-style:italic" />
+					</p>
+					
+					<p>
+						<h:outputLabel value="Data de término: "
+							style="font-family: times, serif; font-size:20pt; font-style:italic"/>
+						<h:outputLabel value="#{projectBean.showProject.endDate}"
+							style="font-family: times, serif; font-size:20pt; font-style:italic" />
+					</p>
+					
+					<p class="link">
+						<a href="pageProjects.xhtml">Voltar</a>
+					</p>
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

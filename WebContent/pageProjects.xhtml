@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<meta charset="UTF-8" />
+	<title>Projetos</title>
+
+	<link href="resources/css/signup.css" rel="stylesheet" />
+</h:head>
+<h:body>
+
+	<h:form id="form">
+
+		<div class="card">
+			<p:dataTable var="project" value="#{projectBean.projects}">
+				<f:facet name="header">Projetos</f:facet>
+
+				<p:column headerText="Nome do projeto">
+					<h:outputText value="#{project.name}" />
+				</p:column>
+
+				<p:column headerText="Descrição">
+					<h:outputText value="#{project.description}" />
+				</p:column>
+
+				<p:column headerText="Data de início">
+					<h:outputText value="#{project.startDate}" />
+				</p:column>
+
+				<p:column headerText="Data de término">
+					<h:outputText value="#{project.endDate}" />
+				</p:column>
+
+				<p:column>
+					<p:growl id="delete" showDetail="true" />
+
+					<p:commandButton action="#{projectBean.getProjectById}"
+						styleClass="rounded-button ui-button-success" icon="pi pi-search"
+						title="Visualizar">
+						<f:param name="idProject" value="#{project.id}" />
+					</p:commandButton>
+
+					<span class="ui.separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton
+						action="#{projectBean.getIdAndRedirectToUpdateProject}"
+						styleClass="rounded-button ui-button-info" icon="pi pi-refresh"
+						title="Editar">
+
+
+						<f:param name="idProject" value="#{project.id}" />
+						<f:param name="nameForm" value="#{project.name}" />
+						<f:param name="descriptionForm" value="#{project.description}" />
+						<f:param name="logoForm" value="#{project.logo}" />
+						<f:param name="startDateForm" value="#{project.startDate}" />
+						<f:param name="endDateForm" value="#{project.endDate}" />
+						<f:ajax execute="@form" render="@form" />
+
+
+					</p:commandButton>
+
+					<span class="ui.separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:commandButton id="deletar" action="#{projectBean.deleteProject}"
+						actionListener="#{projectBean.deleteProjectSucesso}"
+						update="delete" icon="pi pi-times"
+						styleClass="rounded-button ui-button-danger" title="Deletar">
+
+						<f:param name="idProject" value="#{project.id}" />
+						<f:ajax execute="@form" render="@form" />
+
+						<p:confirm header="Confirmação"
+							message="Tem certeza que deseja deletar o projeto?"
+							icon="pi pi-info-circle">
+							<f:ajax execute="@form" render="@form" />
+						</p:confirm>
+					</p:commandButton>
+					<p:message for="deletar" styleClass="info"
+						style="display:contents;" />
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+						responsive="true" width="350">
+						<p:commandButton value="Não" type="button"
+							styleClass="ui-confirmdialog-no ui-button-flat" />
+						<p:commandButton value="Sim" type="button"
+							styleClass="ui-confirmdialog-yes">
+							<f:ajax execute="@form" render="@form" />
+						</p:commandButton>
+					</p:confirmDialog>
+				</p:column>
+
+
+			</p:dataTable>
+		</div>
+
+		<h1>
+			<p:button href="userpage.xhtml" value="Voltar" />
+		</h1>
+
+	</h:form>
+</h:body>
+</html>

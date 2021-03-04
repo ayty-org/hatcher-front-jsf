@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Atualizar Projeto</title>
+
+	<link href="resources/css/user.css" rel="stylesheet" />
+
+</h:head>
+
+<h:body>
+	<div class="container">
+		<a class="links" id="paracadastro"></a> <a class="links"
+			id="paralogin"></a>
+
+		<div class="content">
+			<div id="cadastro">
+				<h:form method="post" action="">
+					<p:growl id="register" showDetail="true" />
+					<h1>Atualizar Projeto</h1>
+
+					<p>
+						<p:outputLabel for="name">Nome do projeto</p:outputLabel>
+						<p:inputText value="#{projectBean.projectUpdate.name}" id="name"
+							name="name" required="true" type="text"
+							placeholder="#{projectBean.projectUpdate.name}" />
+						<p:message for="name" styleClass="error" style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="description">Descrição</p:outputLabel>
+						<p:inputText value="#{projectBean.projectUpdate.description}"
+							id="description" name="description" required="true" type="text"
+							placeholder="#{projectBean.projectUpdate.description}" />
+						<p:message for="description" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="logo">Logo</p:outputLabel>
+						<p:inputText value="#{projectBean.projectUpdate.logo}" id="logo"
+							name="logo" required="true" type="text"
+							placeholder="#{projectBean.projectUpdate.logo}" />
+						<p:message for="logo" styleClass="error" style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="startDate">Data de início</p:outputLabel>
+						<p:inputText value="#{projectBean.projectUpdate.startDate}"
+							id="startDate" name="startDate" required="true" type="date"
+							placeholder="#{projectBean.projectUpdate.startDate}" />
+						<p:message for="startDate" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:outputLabel for="endDate">Data de término</p:outputLabel>
+						<p:inputText value="#{projectBean.projectUpdate.endDate}" id="endDate"
+							name="endDate" required="true" type="date"
+							placeholder="#{projectBean.projectUpdate.endDate}" />
+						<p:message for="endDate" styleClass="error"
+							style="display:contents;" />
+					</p>
+
+					<p>
+						<p:commandButton value="Atualizar"
+							action="#{projectBean.updateProject}"
+							actionListener="#{projectBean.atualizarSucesso}" update="register" />
+						<span class="ui.separator"> <span
+							class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
+						<p:button href="pageProjects.xhtml" value="Voltar" />
+					</p>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+</h:body>
+
+</html>

@@ -6,9 +6,6 @@ Front realizado com JSF consumindo uma API do Hatcher (Ferramenta de gerenciamen
 * Pacote padrão: `org.ayty.*`
 * Criar um servidor Wildfly e inserir no projeto.
 
-## Mudar a rota do servidor Wildfly
-**Como mudar a rota do servidor wildfly:** [Clique aqui.](https://petrim.com.br/blog/index.php/2019/06/17/mudando-portas-no-wildfly/#:~:text=Para%20alterar%20todas%20as%20portas,a%20porta%208080%20fica%208181 "Clique aqui.")
-
 
 ## Informações
 * O pacote `org.ayty.service` possui classes que possuem requisição ou resposta.
@@ -25,7 +22,7 @@ Front realizado com JSF consumindo uma API do Hatcher (Ferramenta de gerenciamen
 
 ## Documentação completa no Driver
 Aqui contém a documentação com as imagens e tutorial passo a passo.
-**Documentação .DOCS:** [Clique aqui.](https://docs.google.com/document/d/1rbkOsDXkWtgD5eXiYU25iHqjVUIBV-9oHlhJ408XKMw/ "Clique aqui.")
+**Documentação .DOCS:** [Clique aqui.](http://https://docs.google.com/document/d/1rbkOsDXkWtgD5eXiYU25iHqjVUIBV-9oHlhJ408XKMw/edit "Clique aqui.")
 
 ##  Locais para acompanhamento de atividades
 **Hatcher-backend-API:** [Clique Aqui.](http://https://github.com/ayty-org/hatcher-api/projects/1 "Clique Aqui.")
@@ -33,7 +30,7 @@ Aqui contém a documentação com as imagens e tutorial passo a passo.
 **Hatcher-front-JSF:** [Clique Aqui.](http://https://github.com/ayty-org/hatcher-front-jsf/projects/1 "Clique Aqui.")
 
 ##  Documentação da API utilizando Swagger
-**Swagger-API:** [Clique aqui.](https://doc-universeme.netlify.app/ "Clique aqui.")
+**Swagger-API:** [Clique aqui.](http://https://doc-universeme.netlify.app/ "Clique aqui.")
 
 # Acompanhamento de atividades
 Existem 4 colunas para verificar o acompanhamento das atividades
